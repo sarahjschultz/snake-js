@@ -1,5 +1,5 @@
 var draw = function(snakeToDraw, apple) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
+  var drawableSnake = { color: "pink", pixels: snakeToDraw };
   var drawableApple = { color: "red", pixels: [apple] };
   var drawableObjects = [drawableSnake, drawableApple];
   CHUNK.draw(drawableObjects);
@@ -12,13 +12,13 @@ var moveSegment = function(segment) {
     case "up":
       return { top: segment.top - 1, left: segment.left };
     case "right":
-      return { top: segment.top, left: segment.left + 1 }
+      return { top: segment.top, left: segment.left + 1 };
     case "left":
-      return { top: segment.top, left: segment.left - 1 }
+      return { top: segment.top, left: segment.left - 1 };
     default:
       return segment;
   }
-}
+};
 
 var segmentFurtherForwardThan = function(index, snake) {
   return snake[index - 1] || snake[index];
@@ -35,7 +35,7 @@ var moveSnake = function(snake) {
     newSegment.direction = segmentFurtherForwardThan(segmentIndex, snake).direction;
     return newSegment;
   });
-}
+};
 
 var growSnake = function(snake) {
   var indexOfLastSegment = snake.length - 1;
@@ -54,6 +54,9 @@ var advanceGame = function() {
 
   if (ate(newSnake, [apple])) {
     newSnake = growSnake(newSnake);
+    var score = SCORE.getScore();
+    var newScore = SCORE.increaseScore(score, 100);
+    SCORE.updateScoreBoard(newScore);
     apple = CHUNK.randomLocation();
   }
 
@@ -68,7 +71,7 @@ var advanceGame = function() {
 
 var changeDirection = function(direction) {
   snake[0].direction = direction;
-}
+};
 
 var apple = CHUNK.randomLocation();
 var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];

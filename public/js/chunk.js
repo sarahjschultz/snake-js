@@ -26,7 +26,7 @@ var CHUNK = {
     tickCallback();
     CHUNK.processID = setInterval(function() {
       tickCallback();
-    }, 1000 / gameSpeed);
+    }, 500 / gameSpeed);
   },
   onArrowKey: function(callback) {
     document.addEventListener('keydown', function(e) {
@@ -37,7 +37,7 @@ var CHUNK = {
     });
   },
   endGame: function() {
-    this.started = false
+    this.started = false;
     clearInterval(CHUNK.processID);
   },
   draw: function(objects) {
@@ -95,8 +95,8 @@ var CHUNK = {
   flashMessage: function(message) {
     var canvas = document.getElementById("chunk-game");
     var context = canvas.getContext('2d');
-    context.font = '20pt Calibri';
-    context.fillStyle = 'yellow';
+    context.font = '20pt Helvetica';
+    context.fillStyle = 'white';
     context.fillText(message, 275, 100);
   }
-}
+};

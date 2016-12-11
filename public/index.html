@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    #chunk-game {
-      background-color: black;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 </head>
 <body>
+  <div class="nav-wrapper">
+      <div class="score-board-wrapper">YOUR SCORE:  <span id="score-board">0</span></div><div class="new-game-button-wrapper"><a class="new-game-button" id="funk" href="/">NEW GAME</a></div>
+  </div>
   <canvas id="chunk-game" height="600" width="800"></canvas>
-
   <script type="text/javascript" src="js/chunk.js"></script>
+  <script type="text/javascript" src="js/score.js"></script>
   <script type="text/javascript" src="js/snake.js"></script>
 </body>
 </html>
